@@ -8,6 +8,7 @@ import {CREATE_USER_MUTATION, SIGN_IN_MUTATION} from "@/lib/gqlQueries";
 import {redirect} from "next/navigation";
 import {LoginFormSchema} from "@/lib/zodSchemas/loginFormSchema";
 import {revalidatePath} from "next/cache";
+import {createSession} from "@/lib/session";
 
 export async function signUp(
   state: SignUpFormState,
@@ -64,6 +65,15 @@ export async function signIn(
     data: Object.fromEntries(formData.entries()),
     message: "Invalid credentials"
   } as SignUpFormState
+
+  await createSession({
+    user: {
+      id: data.signIn.id,
+      name: data.signIn.name,
+      avatar: data.signIn.avatar
+    },
+    accessToken: data.signIn.accessToken
+  })
 
   revalidatePath("/")
   redirect("/")
