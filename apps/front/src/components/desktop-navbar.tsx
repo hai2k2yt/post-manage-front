@@ -4,9 +4,8 @@ type Props = PropsWithChildren
 
 const DesktopNavbar = (props: Props) => {
 
-
   return (
-    <nav className="fixed bg-white w-screen z-30 hidden md:block">
+    <nav className="fixed bg-white w-screen z-30 hidden md:block shadow-md">
       <div className="flex items-center px-4 py-4 container w-full">
         {
           props.children
