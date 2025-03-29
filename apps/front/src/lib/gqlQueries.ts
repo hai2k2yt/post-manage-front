@@ -34,9 +34,20 @@ export const GET_POST_BY_ID = gql`
 `
 
 export const CREATE_USER_MUTATION = gql`
-mutation createUser($input: CreateUserInput!) {
-    createUser(createUserInput: $input) {
+    mutation createUser($input: CreateUserInput!) {
+        createUser(createUserInput: $input) {
+            id
+        }
+    }
+`
+
+export const SIGN_IN_MUTATION = gql`
+mutation signIn($input: SignInInput!) {
+    signIn(signInInput: $input) {
         id
+        name
+        avatar
+        accessToken
     }
 }
 `

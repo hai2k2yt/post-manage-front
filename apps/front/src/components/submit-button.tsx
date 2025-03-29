@@ -1,4 +1,6 @@
 // @flow
+"use client"
+
 import * as React from 'react';
 import {useFormStatus} from "react-dom";
 import {Button, ButtonProps} from "@/components/ui/button";
