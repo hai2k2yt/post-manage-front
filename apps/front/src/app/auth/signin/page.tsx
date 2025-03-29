@@ -2,6 +2,8 @@
 import * as React from 'react';
 import Link from "next/link";
 import SignInForm from "@/app/auth/signin/_components/sign-in-form";
+import {Button} from "@/components/ui/button";
+import {BACKEND_URL} from "@/lib/constants";
 
 
 const SignInPage = () => {
@@ -12,6 +14,11 @@ const SignInPage = () => {
       </h1>
       <SignInForm />
       <Link href="/auth/forgot">Forgot password</Link>
+      <Button>
+        <a href={`${BACKEND_URL}/auth/google/login`}>
+          Sign in with Google
+        </a>
+      </Button>
     </div>
   );
 };
