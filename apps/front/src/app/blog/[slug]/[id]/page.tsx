@@ -3,6 +3,7 @@ import * as React from 'react';
 import {fetchPostById} from "@/lib/actions/postActions";
 import Image from "next/image";
 import SanitizedContent from "@/app/blog/[slug]/[id]/_components/sanitized-content";
+import Comments from "@/app/blog/[slug]/[id]/_components/comments";
 
 type Props = {
   params: {
@@ -33,6 +34,7 @@ const PostPage = async ({params}: Props) => {
 
       <SanitizedContent content={post.content} />
 
+      <Comments postId={post.id} />
     </main>
   );
 };

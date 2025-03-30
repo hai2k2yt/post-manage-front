@@ -42,12 +42,29 @@ export const CREATE_USER_MUTATION = gql`
 `
 
 export const SIGN_IN_MUTATION = gql`
-mutation signIn($input: SignInInput!) {
-    signIn(signInInput: $input) {
-        id
-        name
-        avatar
-        accessToken
+    mutation signIn($input: SignInInput!) {
+        signIn(signInInput: $input) {
+            id
+            name
+            avatar
+            accessToken
+        }
     }
-}
+`
+
+
+export const GET_POST_COMMENTS = gql`
+    query getPostComments($postId: Int!, $take: Int, $skip: Int) {
+        getPostComments(postId: $postId, take: $take, skip: $skip) {
+            id
+            content
+            createdAt
+            author {
+                name
+                avatar
+            }
+        }
+        
+        postCommentCount(postId: $postId)
+    }
 `
