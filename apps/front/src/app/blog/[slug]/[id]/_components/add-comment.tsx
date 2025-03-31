@@ -32,13 +32,15 @@ const AddComment = (props: Props) => {
   const [state, action] = useActionState(saveComment, undefined)
 
   useEffect(() => {
-    console.log(state)
-    toast(
-      state?.ok ? "Success" : "Oops!",
-      {
-        description: state?.message
-      }
-    )
+
+    if (state?.message) {
+      toast(
+        state?.ok ? "Success" : "Oops!",
+        {
+          description: state?.message
+        }
+      )
+    }
 
     if (state?.ok) props.refetch()
   }, [state]);

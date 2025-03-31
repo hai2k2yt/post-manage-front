@@ -97,20 +97,28 @@ export const UNLIKE_POST_MUTATION = gql`
 `
 
 export const GET_USER_POSTS = gql`
-query GetUserPosts($skip: Int, $take: Int) {
-    getUserPosts(skip: $skip, take: $take) {
-        id
-        title
-        slug
-        thumbnail
-        published
-        createdAt
-        content
-        _count {
-            likes
-            comments
+    query GetUserPosts($skip: Int, $take: Int) {
+        getUserPosts(skip: $skip, take: $take) {
+            id
+            title
+            slug
+            thumbnail
+            published
+            createdAt
+            content
+            _count {
+                likes
+                comments
+            }
+        }
+        userPostCount
+    }
+`
+
+export const CREATE_POST_MUTATION = gql`
+    mutation CreatePostMutation($input: CreatePostInput!) {
+        createPost(createPostInput: $input) {
+            id
         }
     }
-    userPostCount
-}
 `

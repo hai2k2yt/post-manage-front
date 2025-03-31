@@ -14,7 +14,11 @@ const PostListItem = ({post}: Props) => {
     hover:scale-[101%] transition text-center bg-white"
     >
       <div className="relative w-48 h-32">
-        <Image src={post.thumbnail ?? "/no-image.png"} alt={post.title} fill/>
+        <Image
+          src={post.thumbnail || "/no-image.png"}
+          alt={post.title}
+          fill
+        />
       </div>
 
       <div className="flex flex-col gap-2 col-span-2">
@@ -42,7 +46,7 @@ const PostListItem = ({post}: Props) => {
         {post._count.comments}
       </div>
 
-      <PostActions postId={post.id} />
+      <PostActions postId={post.id}/>
     </div>
   );
 };
