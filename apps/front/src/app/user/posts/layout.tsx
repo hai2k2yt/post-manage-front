@@ -1,13 +1,16 @@
 // @flow
 import * as React from 'react';
-import {PropsWithChildren} from "react";
+import {PropsWithChildren, ReactNode} from "react";
 
-type Props = PropsWithChildren;
-const PostsLayout = ({children}: Props) => {
+type Props = PropsWithChildren<{
+  modal: ReactNode
+}>;
+const PostsLayout = ({children, modal}: Props) => {
   return (
-    <div className="">
+    <>
       {children}
-    </div>
+      {modal}
+    </>
   );
 };
 
