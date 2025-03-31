@@ -18,7 +18,6 @@ type Props = {
 
 const UpsertPostForm = ({state, formAction}: Props) => {
   const [imageUrl, setImageUrl] = useState("")
-
   useEffect(() => {
     if (state?.message) {
       toast(
@@ -34,6 +33,7 @@ const UpsertPostForm = ({state, formAction}: Props) => {
   return (
     <form action={formAction}
           className="flex flex-col gap-5 [&>div>label]:text-slate-500 [&>div>input]:transition [&>div>textarea]:transition">
+      <input hidden name="postId" defaultValue={state?.data?.postId}/>
       <div>
         <Label htmlFor="title">Title</Label>
         <Input
@@ -78,9 +78,9 @@ const UpsertPostForm = ({state, formAction}: Props) => {
             {state.errors.thumbnail}
           </p>
         )}
-        {!!imageUrl && (
+        {(!!imageUrl || !!state?.data?.previousThumbnailUrl) && (
           <Image
-            src={imageUrl}
+            src={imageUrl || state?.data?.previousThumbnailUrl ?? ""}
             alt="thumbnail"
             width={200}
             height={150}
@@ -93,7 +93,7 @@ const UpsertPostForm = ({state, formAction}: Props) => {
         <Input
           name="tags"
           placeholder="Enter tags (comma-separated)"
-          defaultValue={state?.data?.tag ?? ""}
+          defaultValue={state?.data?.tags ?? ""}
         />
       </div>
       {!!state?.errors?.tags && (
