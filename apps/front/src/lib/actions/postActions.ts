@@ -7,6 +7,7 @@ import {Post} from "@/lib/types/modelTypes";
 import {transformTakeSkip} from "@/lib/helpers";
 import {PostFormState} from "@/lib/types/formState";
 import {PostFormSchema} from "@/lib/zodSchemas/postFormSchema";
+import {uploadThumbnail} from "@/lib/upload";
 
 export const fetchPosts = async (
   {
@@ -67,7 +68,11 @@ export async function saveNewPost(
     } as PostFormState
   }
 
-  const thumbnailUrl = ""
+  let thumbnailUrl = ""
+
+  if (validatedFields.data.thumbnail) {
+    thumbnailUrl = await uploadThumbnail(validatedFields.data.thumbnail)
+  }
 
   const data = authFetchGraphQL(print(CREATE_POST_MUTATION), {
     input: {

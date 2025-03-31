@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "loremflickr.com",
       },
+      {
+        protocol: "https",
+        hostname: process.env.SUPABASE_HOST,
+      },
     ],
   },
 };
