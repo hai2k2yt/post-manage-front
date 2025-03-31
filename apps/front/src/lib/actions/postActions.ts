@@ -1,7 +1,14 @@
 "use server"
 
 import {authFetchGraphQL, fetchGraphQL} from "@/lib/fetchGraphQL";
-import {CREATE_POST_MUTATION, GET_POST_BY_ID, GET_POSTS, GET_USER_POSTS, UPDATE_POST_MUTATION} from "@/lib/gqlQueries";
+import {
+  CREATE_POST_MUTATION,
+  DELETE_POST_MUTATION,
+  GET_POST_BY_ID,
+  GET_POSTS,
+  GET_USER_POSTS,
+  UPDATE_POST_MUTATION
+} from "@/lib/gqlQueries";
 import {print} from "graphql"
 import {Post} from "@/lib/types/modelTypes";
 import {transformTakeSkip} from "@/lib/helpers";
@@ -136,4 +143,12 @@ export async function updatePost(
     message: "Oops! Something wrong",
     ok: false
   }
+}
+
+export async function deletePost(postId: number) {
+  const data = await authFetchGraphQL(print(DELETE_POST_MUTATION), {
+    postId
+  })
+
+  return data.deletePost
 }

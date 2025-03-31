@@ -4,9 +4,9 @@ import UpdatePostContainer from "@/app/user/posts/[id]/update/_components/update
 import {fetchPostById} from "@/lib/actions/postActions";
 
 type Props = {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 };
 const Page = async (props: Props) => {
   const params = await props.params
