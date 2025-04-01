@@ -17,5 +17,8 @@
   "license": "ISC",
   "devDependencies": {
     "turbo": "^2.4.4"
+  },
+  "dependencies": {
+    "graphql": "^16.10.0"
   }
 }
