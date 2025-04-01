@@ -81,11 +81,11 @@ export async function saveNewPost(
     thumbnailUrl = await uploadThumbnail(validatedFields.data.thumbnail)
   }
 
-  const {postId, ...inputs} = validatedFields.data
+  delete validatedFields.data.postId
 
-  const data = authFetchGraphQL(print(CREATE_POST_MUTATION), {
+  const data = await authFetchGraphQL(print(CREATE_POST_MUTATION), {
     input: {
-      ...inputs,
+      ...validatedFields.data,
       thumbnail: thumbnailUrl
     }
   })
@@ -127,7 +127,7 @@ export async function updatePost(
     thumbnailUrl = await uploadThumbnail(thumbnail)
   }
 
-  const data = authFetchGraphQL(print(UPDATE_POST_MUTATION), {
+  const data = await authFetchGraphQL(print(UPDATE_POST_MUTATION), {
     input: {
       ...inputs,
       ...(thumbnailUrl && {thumbnail: thumbnailUrl})

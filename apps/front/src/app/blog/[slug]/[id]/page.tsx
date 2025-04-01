@@ -8,10 +8,9 @@ import {getSession} from "@/lib/session";
 import Like from "@/app/blog/[slug]/[id]/_components/like";
 
 type Props = {
-  params: {
-    id: string
-  }
+  params: Promise<{ id: string }>;
 };
+
 const PostPage = async ({params}: Props) => {
   const postId = (await params).id
   const post = await fetchPostById(+postId)
@@ -38,7 +37,7 @@ const PostPage = async ({params}: Props) => {
 
       <SanitizedContent content={post.content} />
 
-      <Like postId={post.id} user={session?.user} />
+      <Like postId={post.id} />
 
       <Comments user={session?.user} postId={post.id} />
     </main>

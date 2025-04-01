@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Hero = () => {
   return (
     <div className="bg-gradient-to-br from-sky-500 to-indigo-500 text-white pt-16">
@@ -14,16 +16,14 @@ const Hero = () => {
           </p>
         </div>
         <div className="w-full flex justify-center text-center py-7 md:w-3/5">
-          <img
+          <Image
+            width={500}
+            height={500}
             src="/hero.png"
             alt="hero section"
             className="w-full md:w-4/5 z-30"
           />
         </div>
-      </div>
-
-      <div className="relative -mt-10 lg:-mt-24">
-        <img src="/wave.svg" alt=""/>
       </div>
     </div>
   )

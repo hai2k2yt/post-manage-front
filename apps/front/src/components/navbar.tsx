@@ -3,9 +3,7 @@ import {getSession} from "@/lib/session";
 import SignInPanel from "@/components/signInPanel";
 import Profile from "@/components/profile";
 
-type Props = {}
-
-const Navbar = async (props: Props) => {
+const Navbar = async () => {
   const session = await getSession()
 
   return (

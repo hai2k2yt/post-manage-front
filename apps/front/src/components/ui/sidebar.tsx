@@ -11,7 +11,7 @@ type Props = PropsWithChildren<{
 
 const Sidebar = (props: Props) => {
   const [show, setShow] = useState(false)
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null!)
   useOnClickOutside(ref, () => setShow(false))
   return (
     <>

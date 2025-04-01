@@ -2,7 +2,6 @@
 "use client"
 
 import * as React from 'react';
-import {SessionUser} from "@/lib/session";
 import {HeartIcon} from "@heroicons/react/24/outline";
 import {HeartIcon as SolidHeartIcon} from "@heroicons/react/20/solid";
 import {useMutation, useQuery} from "@tanstack/react-query";
@@ -10,9 +9,8 @@ import {getPostLikeData, likePost, unlikePost} from "@/lib/actions/like";
 
 type Props = {
   postId: number
-  user?: SessionUser
 };
-const Like = ({postId, user}: Props) => {
+const Like = ({postId}: Props) => {
   const {data, refetch: refetchPostLikeData} = useQuery({
     queryKey: ["GET_POST_LIKE_DATA", postId],
     queryFn: async () => await getPostLikeData(postId)

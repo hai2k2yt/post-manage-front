@@ -2,7 +2,6 @@
 import * as React from 'react';
 import {calculatePageNumbers} from "@/lib/helpers";
 import {cn} from "@/lib/utils";
-import Link from "next/link";
 import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/20/solid";
 
 type Props = {

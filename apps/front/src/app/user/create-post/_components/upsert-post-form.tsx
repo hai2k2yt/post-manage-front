@@ -80,7 +80,7 @@ const UpsertPostForm = ({state, formAction}: Props) => {
         )}
         {(!!imageUrl || !!state?.data?.previousThumbnailUrl) && (
           <Image
-            src={imageUrl || state?.data?.previousThumbnailUrl ?? ""}
+            src={(imageUrl || state?.data?.previousThumbnailUrl) ?? ""}
             alt="thumbnail"
             width={200}
             height={150}

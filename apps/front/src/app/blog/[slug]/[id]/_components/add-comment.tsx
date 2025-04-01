@@ -28,7 +28,14 @@ type Props = {
   >
 };
 
-const AddComment = (props: Props) => {
+const AddComment = (
+  {
+    postId,
+    user,
+    refetch,
+    className
+  }: Props
+) => {
   const [state, action] = useActionState(saveComment, undefined)
 
   useEffect(() => {
@@ -42,8 +49,8 @@ const AddComment = (props: Props) => {
       )
     }
 
-    if (state?.ok) props.refetch()
-  }, [state]);
+    if (state?.ok) refetch()
+  }, [state, refetch]);
   return (
     <Dialog open={state?.open}>
       <DialogTrigger asChild>
@@ -53,11 +60,11 @@ const AddComment = (props: Props) => {
         <DialogTitle>
           Write your comment
         </DialogTitle>
-        <form action={action} className={cn(props.className)}>
+        <form action={action} className={cn(className)}>
           <input
             hidden
             name="postId"
-            defaultValue={props.postId}
+            defaultValue={postId}
           />
           <Label htmlFor="content">Your comment</Label>
           <div className="border-t border-x rounded-t-md">
@@ -73,7 +80,7 @@ const AddComment = (props: Props) => {
           </div>
           <p className="border rounded-b-md p-2">
             <span className="text-slate-400">Write as </span>
-            <span className="text-slate-700">{props.user.name}</span>
+            <span className="text-slate-700">{user.name}</span>
           </p>
           <SubmitButton className="mt-2">Submit</SubmitButton>
         </form>

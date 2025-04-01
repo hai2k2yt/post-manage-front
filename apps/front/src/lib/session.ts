@@ -26,12 +26,14 @@ export async function createSession(payload: Session) {
 
   const expiredAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
 
-  (await cookies()).set("session", session, {
+  const cookieStore = await cookies()
+
+  cookieStore.set("session", session, {
     httpOnly: true,
     secure: true,
     expires: expiredAt,
-    samesite: "lax",
-    path: "/"
+    sameSite: 'lax' as const,
+    path: '/'
   })
 }
 
