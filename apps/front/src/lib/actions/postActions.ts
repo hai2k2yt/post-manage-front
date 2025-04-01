@@ -81,9 +81,11 @@ export async function saveNewPost(
     thumbnailUrl = await uploadThumbnail(validatedFields.data.thumbnail)
   }
 
+  const {postId, ...inputs} = validatedFields.data
+
   const data = authFetchGraphQL(print(CREATE_POST_MUTATION), {
     input: {
-      ...validatedFields.data,
+      ...inputs,
       thumbnail: thumbnailUrl
     }
   })
