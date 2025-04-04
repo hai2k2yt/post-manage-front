@@ -1,6 +1,14 @@
 {
   "tasks": {
     "build": {
+      "env": [
+        "SESSION_SECRET_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_HOST",
+        "SUPABASE_API_KEY",
+        "SUPABASE_BUCKET",
+        "BACKEND_URL"
+      ],
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
