@@ -19,6 +19,6 @@
     "turbo": "^2.4.4"
   },
   "dependencies": {
-    "graphql": "^16.10.0"
+    "@apollo/server": "^4.11.3"
   }
 }
